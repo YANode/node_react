@@ -4,13 +4,24 @@ require('dotenv').config();
 const express = require('express');
 //created app object
 const app = express();
-//connect sequelize
+//connect  - interaction  'Node.js - relational databases' without SQL queries
 const sequelize = require('./db');
-
 //import models
 const models = require('./models/models');
+//import packet cors - to send requests from a browser
+const cors = require('cors');
+//import main router
+const router = require('./routes/index');
+
 
 const PORT = process.env.PORT || 5000;
+
+app.use(cors());
+app.use(express.json());
+app.use('/api', router);
+
+
+
 
 //function to connect to the database
 const start = async () => {
