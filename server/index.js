@@ -12,6 +12,8 @@ const models = require('./models/models');
 const cors = require('cors');
 //import main router
 const router = require('./routes/index');
+//import our middleware
+const errorHandler = require('./middleware/ErrorHandingMiddleware');
 
 
 const PORT = process.env.PORT || 5000;
@@ -20,7 +22,8 @@ app.use(cors());
 app.use(express.json());
 app.use('/api', router);
 
-
+//error handling - last middleware
+app.use(errorHandler);
 
 
 //function to connect to the database
@@ -34,6 +37,8 @@ const start = async () => {
     }
 }
 
-start()
+start();
+
+
 
 
