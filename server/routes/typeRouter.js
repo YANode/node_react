@@ -7,7 +7,7 @@ const TypeController = require('../controllers/typeController');
 router.post('/', TypeController.create);
 
 //get the type
-router.get('/', TypeController. getAll);
+router.get('/', TypeController.getAll);
 
 
 

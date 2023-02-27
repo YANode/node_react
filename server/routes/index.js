@@ -1,10 +1,12 @@
+
+//identifying routers
 const Router = require('express');
 const router = new Router();
 
 //import all the sub-rooters
 const typeRouter = require('./typeRouter');
 const brandRouter = require('./brandRouter');
-const userRouter = require('./userRouter');
+const userRouter = require('./userRouter'); //for addresses with "/user"
 const deviceRouter = require('./deviceRouter');
 
 //establish a link with the sub-rooters

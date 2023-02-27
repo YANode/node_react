@@ -14,13 +14,19 @@ const cors = require('cors');
 const router = require('./routes/index');
 //import our middleware
 const errorHandler = require('./middleware/ErrorHandingMiddleware');
-
+//to simply retrieve the file in an express request
+const fileUpload = require('express-fileupload');
+const path = require('path');
 
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+app.use(fileUpload({})); //parameters - empty object with options
+//to receive static files from the browser
+app.use(express.static(path.resolve(__dirname, 'static')));
 app.use('/api', router);
+
 
 //error handling - last middleware
 app.use(errorHandler);
