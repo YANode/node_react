@@ -1,3 +1,8 @@
+/*controllers - process incoming http requests, using models and views
+to process them, and send some processing result back to the client*/
+
+
+
 const ApiError = require('../error/ApiError');
 
 class UserController {
