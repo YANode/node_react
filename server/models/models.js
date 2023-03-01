@@ -81,7 +81,7 @@ Rating.belongsTo(Device);
 Device.hasMany(BasketDevice);
 BasketDevice.belongsTo(Device);
 
-Device.hasMany(DeviceInfo);
+Device.hasMany(DeviceInfo, {as: 'info'});// 'info' - field name for the feature array
 DeviceInfo.belongsTo(Device);
 
 //with linkage model 'TypeBrand'  => many to many
