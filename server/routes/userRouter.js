@@ -2,6 +2,8 @@ const Router = require('express');
 const router = new Router();
 const UserController = require('../controllers/userController');
 
+const jsonwebtoken = require('jsonwebtoken');
+
 //create registration
 router.post('/registration', UserController.registration);
 
