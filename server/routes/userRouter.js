@@ -14,8 +14,5 @@ router.post('/login', UserController.login);
 //check if the user is authorised or not
 router.get('/auth', authMiddleware, UserController.check);
 
-
-
-
-
 module.exports = router;
+
