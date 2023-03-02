@@ -9,10 +9,11 @@ const bcrypt = require('bcrypt'); //npm i bcrypt
 const jwt = require('jsonwebtoken');
 const {User, Basket} = require('../models/models');
 
+
 //token creation function
 const generateJwt = (id, email, role) => {
     return jwt.sign(
-        {id, email, role},
+        {id, email, role},//the central part of the jwt token "PAYLOAD" into which the data will be embedded
         process.env.SECRET_KEY,
         {expiresIn: '24h'} //how long the token lives
     )
@@ -65,15 +66,13 @@ class UserController {
     }
 
 
-    //the function checks whether the user is authorised or not
+    //generate a new token and send it back to the client
     async check(req, res, next) {
-        const {id} = req.query;
-        if (!id) {
-            return next(ApiError.badRequest('id not specified'));
-        }
-        res.json(id);
+       const token = generateJwt(req.user.id, req.user.email, req.user.role)
+        return res.json({token});
     }
 }
 
 module.exports = new UserController();
+
 
