@@ -40,11 +40,27 @@ class UserController {
             //return token to the client
             return res.json({token}); //decoder -> https://jwt.io/
         }
-
-
     }
 
-    async login(req, res) {
+    async login(req, res, next) {
+        const {email, password} = req.body;
+        const user = await User.findOne({where: {email: req.body.email}});
+
+        if (!user) {
+            return next(ApiError.internal('User not found'))
+        }
+
+        //check: the 'password' that the user wrote in the form is the same as the 'user.password' from the database
+        let comparePassword = await bcrypt.compareSync(password, user.password);
+
+        if(!comparePassword) {
+            return next(ApiError.internal('Wrong password'))
+        }
+
+        const token = await generateJwt(user.id, user.email);
+        //return token to the client
+        return res.json({token});//decoder -> https://jwt.io/
+
 
     }
 
