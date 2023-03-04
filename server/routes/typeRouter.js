@@ -10,6 +10,9 @@ router.post('/', checkRole('ADMIN'), TypeController.create);
 //get the type
 router.get('/', TypeController.getAll);
 
+//delete a specific type
+router.post('/remove', checkRole('ADMIN'), TypeController.remove);
+
 
 module.exports = router;
 

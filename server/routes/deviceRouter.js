@@ -14,6 +14,10 @@ router.get('/', DeviceController.getAll);
 router.get('/:id', DeviceController.getOne);
 
 
+//delete a specific device
+router.post('/remove', checkRole('ADMIN'), DeviceController.remove);
+
+
 
 
 
