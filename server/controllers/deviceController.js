@@ -3,7 +3,7 @@ to process them, and send some processing result back to the client*/
 
 const {Device, DeviceInfo} = require('../models/models');
 const ApiError = require('../error/ApiError');
-//generates random random id's that will not be repeated
+//generates random  id's that will not be repeated
 const uuid = require('uuid');//npm i uuid
 //set of functions for working with paths in the file system
 const path = require('path');
@@ -100,6 +100,24 @@ class DeviceController {
         );
         return res.json(device);
     }
+
+
+    async remove(req, res) {
+        try {
+            const {id} = req.body;
+            const device = await Device.destroy(
+                {
+                    where: {id}
+                })
+            return res.json(device);
+
+        } catch (e) {
+            console.log("error=>", e)
+
+        }
+
+    }
+
 
 };
 

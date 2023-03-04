@@ -10,7 +10,7 @@ router.post('/', checkRole('ADMIN'), BrandController.create);
 //get the brand
 router.get('/', BrandController.getAll);
 
-
+router.post('/remove', checkRole('ADMIN'), BrandController.remove);
 
 
 
