@@ -3,7 +3,7 @@ import React from 'react';
 const DevicePage = () => {
     return (
         <div>
-            DEVICE PAGE
+            DevicesPage
         </div>
     );
 };
