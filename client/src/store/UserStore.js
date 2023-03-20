@@ -6,7 +6,7 @@ import {makeAutoObservable} from 'mobx'
 export default class UserStore {
     constructor() { //is called when an object of this class is created
         //variables with '_' cannot be changed
-        this._isAuth = false //observable field
+        this._isAuth = true //observable field
         this._user = {} //observable field
         makeAutoObservable(this)//this - context of the current class, automatically marks all fields of the class as observable
     }
