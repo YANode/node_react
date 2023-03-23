@@ -11,7 +11,7 @@ const AppRouter = () => {
 
     //hook 'useContext' will return the data passed in the value parameter of <Context.Provider>
     const {user, device} = useContext(Context)
-    console.log(user, device)
+
 
     return (
 
