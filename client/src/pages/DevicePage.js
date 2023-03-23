@@ -58,7 +58,7 @@ const DevicePage = () => {
             </Form>
 
 
-            <h1>Specifications: </h1>
+            <h1>Features: </h1>
             <Row className="d-flex flex-column mt-3">
                 <>
                     {description.map((info, index) =>
